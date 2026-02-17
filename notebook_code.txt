@@ -1,0 +1,43 @@
+# CORRECT CODE FOR YOUR JUPYTER NOTEBOOK
+# Copy and paste this into your notebook cells
+
+# Cell 1: Import libraries and set display options
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+pd.set_option('display.max_columns', None)
+pd.set_option('display.width', 200)
+
+# Cell 2: Load the dataset (THIS WAS MISSING!)
+df_complete = pd.read_csv('data/premier_league_complete_2016_2026.csv')
+
+# Cell 3: Check the shape
+print(df_complete.shape)
+
+# Cell 4: View first rows
+df_complete.head()
+
+# Cell 5: View last rows (current season)
+df_complete.tail()
+
+# Cell 6: Get info
+df_complete.info()
+
+# Cell 7: Statistical summary
+df_complete.describe()
+
+# Cell 8: Check for missing values
+df_complete.isnull().sum()
+
+# Cell 9: View current season standings
+current_season = df_complete[df_complete['Season'] == '2025-26'].sort_values('Rk')
+current_season[['Rk', 'Squad', 'MP', 'W', 'D', 'L', 'GF', 'GA', 'GD', 'Pts', 'Pts/MP']]
+
+# Cell 10: View all seasons
+df_complete['Season'].value_counts().sort_index()
+
+# Cell 11: Champions by season
+champions = df_complete[df_complete['Rk'] == 1].sort_values('Season')
+champions[['Season', 'Squad', 'Pts', 'GF', 'GA']]
